@@ -12,7 +12,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp',(err,client)=>{
     // To Insert New Data Into A Collection
     
     db.collection('Todos').insertOne({
-        text:'second Todo',
+        text:'Eat Lunch',
         completed: false
         // CallBack Function To Handle Err and to return the value entered.
     },(Err,result)=>{
