@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
 const {mongoose} = require('./db');
@@ -73,7 +74,7 @@ app.patch('/todos/:id', (req, res) => {
         res.send({ todo });
     }).catch((e) => {
         res.status(400).send();
-    })
+    });
 });
 
 app.listen(port, () => {
