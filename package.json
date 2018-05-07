@@ -4,8 +4,12 @@
   "description": "A API for todo",
   "main": "server/server.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "mocha --timeout=5000 server/**/*.test.js",
     "test-watch": "nodemon --exec \"npm test\""
+  },
+  "engines": {
+    "node": "8.10.0"
   },
   "author": "AJ",
   "license": "ISC",
