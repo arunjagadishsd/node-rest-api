@@ -5,10 +5,10 @@ if (env === 'production'){
     process.env.MONGODB_URI = 'mongodb://arunjagadishsd:ArunMlabs@ds217350.mlab.com:17350/todosapp';
 }
 if(env === 'development'){
-    process.env.PORT = 8081;
-    process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoApp';
-} else if (env === 'test') {
     process.env.PORT = 3000;
+    process.env.MONGODB_URI = 'mongodb://localhost:27017/TodosApp';
+} else if (env === 'test') {
+    process.env.PORT = 8081;
     process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoAppTest';
 }
 
@@ -24,6 +24,10 @@ let app = express();
 const port = process.env.PORT;
 
 app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+    res.redirect('/todos');
+});
 
 app.post('/todos', (req, res) => {
     let {text} = req.body;
@@ -89,6 +93,14 @@ app.patch('/todos/:id', (req, res) => {
     }).catch((e) => {
         res.status(400).send();
     });
+});
+
+// Users route
+app.post('/users',(req,res)=>{
+    let body = _.pick(req.body, ['email', 'password']);
+    let user = new User(body);
+    user.save().then(user => res.json(user)).catch(e => res.status(400).send(e));
+    
 });
 
 app.listen(port, () => {
