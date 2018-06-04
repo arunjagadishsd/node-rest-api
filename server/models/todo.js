@@ -15,5 +15,6 @@ let todoSchema = {
         default: null
     }
 };
+
 let Todo = mongoose.model('Todo', todoSchema);
-module.exports = {Todo};
+module.exports = {Todo}
